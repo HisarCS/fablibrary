@@ -4,6 +4,8 @@ An open design library for the K12 students of Hisar IdeaLab FabLab. Every proje
 
 **Assemble → Modify → Design → Fabricate → Test → Improve**
 
+![Welcome Space spaceship, day and night](projects/welcome-space/img/v1_day_night_illustration.svg)
+
 <div class="grid cards" markdown>
 
 -   :material-rocket-launch: **Welcome Space** · Mission 01
@@ -25,3 +27,15 @@ An open design library for the K12 students of Hisar IdeaLab FabLab. Every proje
     Coming soon
 
 </div>
+
+## The path
+
+| Mission | Idea | Status |
+|---|---|---|
+| 01 Assemble | Build and light your own spaceship from ready-made digital-fabrication parts | v1 prototype |
+| 02 Modify | Change a part: your own wing shape | Planned |
+| 03 Design | Design a part in CAD from scratch | Planned |
+| 04 Fabricate | Cut and print your own design | Planned |
+| 05 Improve | Test, find what to fix, make version 2 | Planned |
+
+*Your first design does not have to be your last design.*

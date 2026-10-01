@@ -5,3 +5,5 @@ __pycache__/
 .DS_Store
 out/
 .venv/
+docs/projects/*/files/
+docs/projects/*/kit-list.md

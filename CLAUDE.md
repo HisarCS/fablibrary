@@ -6,7 +6,7 @@ All repository content (docs, READMEs, code comments, drawing labels, commit mes
 ## Structure
 - `projects/<project>/` : source files for each project (laser, 3d, drawings, electronics, teaching, tests, generators)
 - `docs/` : MkDocs Material site. Project pages live in `docs/projects/<project>/`.
-- `hooks/copy_assets.py` : before each build, copies `projects/*/drawings/*.svg` into `docs/projects/<project>/img/`. The `img/` folders are git-ignored.
+- `hooks/copy_assets.py` : before each build, copies drawings to `docs/projects/<project>/img/`, laser SVGs and SCAD files to `files/` (downloads) and `kit-list.md` into the docs. All of these copies are git-ignored; edit the sources under `projects/`.
 - `.github/workflows/pages.yml` : publishes the site to GitHub Pages on every push to `main`.
 
 ## Rules

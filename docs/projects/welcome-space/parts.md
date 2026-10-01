@@ -1,15 +1,17 @@
 # Parts and files
 
-All tolerances are **estimates**; they are updated in the generator scripts after testing.
+Click a file name to download it. Sources and generator scripts are in the [GitHub repository](https://github.com/HisarCS/fablibrary/tree/main/projects/welcome-space).
+
+All tolerances are **estimates**; they are updated in the generator scripts after testing. The full list is on the [Kit list](kit-list.md) page.
 
 | Part | Qty | Process | File |
 |---|---|---|---|
-| Base plate Ø110 | 1 | Laser, 3 mm birch | [v1_base_plate_laser.svg](https://github.com/HisarCS/fablibrary/blob/main/projects/welcome-space/laser/v1_base_plate_laser.svg) |
-| Body panel | 3 | Laser | [v1_panel_laser.svg](https://github.com/HisarCS/fablibrary/blob/main/projects/welcome-space/laser/v1_panel_laser.svg) |
-| Wing | 3 | Laser | [v1_wing_laser.svg](https://github.com/HisarCS/fablibrary/blob/main/projects/welcome-space/laser/v1_wing_laser.svg) |
-| Comb test | – | Laser | [v1_comb_test_laser.svg](https://github.com/HisarCS/fablibrary/blob/main/projects/welcome-space/laser/v1_comb_test_laser.svg) |
-| Nose cone | 1 | 3D, translucent | [v1_nose_cone.scad](https://github.com/HisarCS/fablibrary/blob/main/projects/welcome-space/3d/v1_nose_cone.scad) |
-| Exhaust diffuser | 1 | 3D, translucent | [v1_diffuser.scad](https://github.com/HisarCS/fablibrary/blob/main/projects/welcome-space/3d/v1_diffuser.scad) |
+| Base plate Ø110 | 1 | Laser, 3 mm birch | [v1_base_plate_laser.svg](files/v1_base_plate_laser.svg){ download } |
+| Body panel | 3 | Laser | [v1_panel_laser.svg](files/v1_panel_laser.svg){ download } |
+| Wing | 3 | Laser | [v1_wing_laser.svg](files/v1_wing_laser.svg){ download } |
+| Comb test | – | Laser | [v1_comb_test_laser.svg](files/v1_comb_test_laser.svg){ download } |
+| Nose cone | 1 | 3D, translucent | [v1_nose_cone.scad](files/v1_nose_cone.scad){ download } |
+| Exhaust diffuser | 1 | 3D, translucent | [v1_diffuser.scad](files/v1_diffuser.scad){ download } |
 
 !!! note "Laser colors"
     Red hairline = cut, black = engrave. Convert text to outlines before sending to the machine.
