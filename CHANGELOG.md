@@ -3,6 +3,7 @@
 ## Welcome Space
 
 ### Site update
+- Added GS-24 copper band, BN-20 sticker sheet, troubleshooting card, bench test log template and an assumptions log (all parts assumed delivered for planning).
 - Added a first-week task plan and a script that creates its GitHub issues.
 - Added finished-ship illustrations (day, dark room, personalization), safety page, kit list page, real file downloads and a mission roadmap.
 
