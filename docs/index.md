@@ -25,7 +25,3 @@ An open design library for the K12 students of Hisar IdeaLab FabLab. Every proje
     Coming soon
 
 </div>
-
-## The lab
-
-17× Bambu Lab P1S · 2× xTool P3S · Epilog M2 · Roland BN-20 · Roland GS-24
