@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="230mm" height="150mm" viewBox="0 0 230 150">
+<rect width="230" height="150" fill="#fff"/>
+<text x="8" y="9" font-size="5" font-family="Arial" font-weight="bold" fill="#222">v1 spaceship - wing (dimensions in mm)</text>
+<line x1="20" y1="125" x2="20" y2="15" stroke="#888" stroke-width="0.25" stroke-dasharray="3 1.5 0.5 1.5"/><text x="21" y="14" font-size="3" font-family="Arial" fill="#555">axis</text>
+<rect x="20" y="95" width="55" height="3" fill="#E8CFA3" stroke="#8A6A3C" stroke-width="0.3"/><polygon points="70,100 77.6,100 80.8,119 82,119 78,95 75.2,95 75.2,98 70,98" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.3"/><line x1="15" y1="119" x2="115" y2="119" stroke="#888" stroke-width="0.3"/><text x="105" y="123" font-size="3" font-family="Arial" fill="#555">table</text>
+<polygon points="46.00,95.00 50.10,95.00 50.10,97.50 69.90,97.50 69.90,95.00 83.00,95.00 83.00,113.00 98.00,113.00 98.00,103.00 60.00,25.00 46.00,25.00" fill="#378ADD" fill-opacity="0.85" stroke="#0C447C" stroke-width="0.4"/>
+<line x1="46.00" y1="19.00" x2="98.00" y2="19.00" stroke="#185FA5" stroke-width="0.25"/><circle cx="46.00" cy="19.00" r="0.6" fill="#185FA5"/><circle cx="98.00" cy="19.00" r="0.6" fill="#185FA5"/><text x="72.00" y="17.50" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">52 (r 26..78)</text>
+<line x1="106.00" y1="25.00" x2="106.00" y2="113.00" stroke="#185FA5" stroke-width="0.25"/><circle cx="106.00" cy="25.00" r="0.6" fill="#185FA5"/><circle cx="106.00" cy="113.00" r="0.6" fill="#185FA5"/><text x="108.00" y="70.00" font-size="3.2" text-anchor="start" font-family="Arial" fill="#185FA5">88</text>
+<line x1="50.10" y1="128.00" x2="69.90" y2="128.00" stroke="#185FA5" stroke-width="0.25"/><circle cx="50.10" cy="128.00" r="0.6" fill="#185FA5"/><circle cx="69.90" cy="128.00" r="0.6" fill="#185FA5"/><text x="60.00" y="132.00" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">tab 19.8 x 2.5</text>
+<line x1="83.00" y1="135.00" x2="98.00" y2="135.00" stroke="#185FA5" stroke-width="0.25"/><circle cx="83.00" cy="135.00" r="0.6" fill="#185FA5"/><circle cx="98.00" cy="135.00" r="0.6" fill="#185FA5"/><text x="90.50" y="139.00" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">15</text>
+<text x="115" y="40" font-size="3" font-family="Arial" fill="#555">- wing x3, identical parts, 3 mm plywood.</text>
+<text x="115" y="46" font-size="3" font-family="Arial" fill="#555">- fits the 20 mm wing slot in the base (30/150/270 deg).</text>
+<text x="115" y="52" font-size="3" font-family="Arial" fill="#555">- poka-yoke: the 27.8 panel tab does not fit a wing slot;</text>
+<text x="115" y="57" font-size="3" font-family="Arial" fill="#555">  a wing tab is loose in a panel slot, easy to notice.</text>
+<text x="115" y="63" font-size="3" font-family="Arial" fill="#555">- lower part sits outside the diffuser, ends 6 mm above the table.</text>
+<text x="115" y="69" font-size="3" font-family="Arial" fill="#555">- closest gap to the diffuser ~2 mm (at the bottom).</text>
+<text x="115" y="75" font-size="3" font-family="Arial" fill="#555">- no clash with panels: wings sit 60 deg between them.</text>
+<text x="115" y="83" font-size="3" font-family="Arial" fill="#555">TEST: with a single 20 mm tab the wing may lean.</text>
+<text x="115" y="88" font-size="3" font-family="Arial" fill="#555">if it wobbles: split the tab in two or reduce slot T.</text>
+</svg>

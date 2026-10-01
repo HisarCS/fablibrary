@@ -1,0 +1,46 @@
+name: Test result
+description: Record a prototype test measurement and decision
+title: "[Test] "
+labels: ["test"]
+body:
+  - type: dropdown
+    id: project
+    attributes:
+      label: Project
+      options: [Welcome Space]
+    validations: {required: true}
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Test stage
+      options:
+        - 1 Electronics bench test
+        - 2 Copper tape / GS-24
+        - 3 Laser press-fit (comb test)
+        - 4 3D print (nose cone / diffuser)
+        - 5 Stickers (BN-20)
+        - 6 Integrated prototype
+        - 7 Pilot lesson
+    validations: {required: true}
+  - type: input
+    id: parameter
+    attributes:
+      label: Parameter and values tested
+      placeholder: "SLOT_W: 3.00 / 3.05 / 3.10 / 3.15"
+  - type: textarea
+    id: measurement
+    attributes:
+      label: Measurements and observations
+      description: Numbers, timing, photos (no student faces)
+    validations: {required: true}
+  - type: dropdown
+    id: result
+    attributes:
+      label: Gate criterion
+      options: [Pass, Fail, Retest]
+    validations: {required: true}
+  - type: input
+    id: decision
+    attributes:
+      label: Decision
+      placeholder: "Set SLOT_W = 3.15"
