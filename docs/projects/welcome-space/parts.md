@@ -24,6 +24,7 @@ All tolerances are **estimates**; they are updated in the generator scripts afte
 | Sticker sheet, one student (print + cut) | Roland BN-20 | [v1_sticker_sheet_print_cut.svg](files/v1_sticker_sheet_print_cut.svg){ download } |
 | Troubleshooting card (A6) | Printer | [v1_troubleshooting_card.svg](files/v1_troubleshooting_card.svg){ download } |
 | Bench test log | – | [bench-test-template.csv](files/bench-test-template.csv){ download } |
+| Student step card (A4, picture-first) | Printer | [v1_student_card.svg](files/v1_student_card.svg){ download } |
 
 !!! warning "Assumptions"
     The GS-24 file assumes a 50 mm wide conductive copper roll can be fed and weeded. See the [assumptions log](assumptions.md) (A13, A14).
