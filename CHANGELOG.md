@@ -3,6 +3,7 @@
 ## Welcome Space
 
 ### Site update
+- Added a first-week task plan and a script that creates its GitHub issues.
 - Added finished-ship illustrations (day, dark room, personalization), safety page, kit list page, real file downloads and a mission roadmap.
 
 ### v1-proto1 (draft)
