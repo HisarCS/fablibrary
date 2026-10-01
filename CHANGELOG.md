@@ -2,6 +2,10 @@
 
 ## Welcome Space
 
+### Diffuser: supportless ledge (draft)
+- `v1_diffuser.scad`: the ledge underside is now a 45-degree chamfer instead of a flat shelf, so the diffuser prints without supports. New parameter `chamferDz` = 10 mm. The switch window cut now spans the wall from `ledgeR-6` to `Rbot+6`. `pocketD` is unchanged (110.4, still to be confirmed). Related test: [#4](https://github.com/HisarCS/fablibrary/issues/4).
+- `v1_base_diffuser_drawing.svg` and the preview meshes regenerated from the same numbers.
+
 ### Site update
 - Hero and personalization illustrations now show the stickers applied; the sticker sheet is shown on the project page.
 - Added GS-24 copper band, BN-20 sticker sheet, troubleshooting card, bench test log template and an assumptions log (all parts assumed delivered for planning).

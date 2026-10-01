@@ -87,7 +87,7 @@ svg+=f'<text x="{px-55}" y="{py+66}" font-size="3" font-family="Arial" fill="#55
 # section
 sx,sy=205,60
 def P(r,y,sgn=1): return (sx+sgn*r, sy+y)
-prof=[(55.2,0),(58,0),(62,24),(60.8,24),(57.63,5),(50,5),(50,3),(55.2,3)]
+prof=[(55.2,0),(58,0),(62,24),(60.8,24),(59.3,15),(50,5),(50,3),(55.2,3)]
 for sgn in (1,-1):
     pts=' '.join(f'{sx+sgn*r:.2f},{sy+y:.2f}' for r,y in prof)
     svg+=f'<polygon points="{pts}" fill="#B5D4F4" fill-opacity="0.75" stroke="#185FA5" stroke-width="0.4"/>\n'
@@ -101,7 +101,7 @@ svg+=dim(sx-62,sy+30,sx+62,sy+30,'&#216;124 (bottom)',0,4.5)
 svg+=dim(sx-58,sy-4,sx+58,sy-4,'&#216;116 (top)',0,-1.5)
 svg+=dim(sx+66,sy,sx+66,sy+24,'24',2,1,'start')
 svg+=dim(sx-50,sy+19,sx+50,sy+19,'&#216;100 support ledge (electronics stay inside this ring)',0,-1.5)
-svg+=f'<text x="{sx-62}" y="{sy+42}" font-size="3" font-family="Arial" fill="#555">pocket: &#216;110.4 x 3 deep (plate sits in), ledge 2 thick, wall 1.2, bottom fully open.</text>\n'
+svg+=f'<text x="{sx-62}" y="{sy+42}" font-size="3" font-family="Arial" fill="#555">pocket: &#216;110.4 x 3 deep (plate sits in), ledge underside chamfered 45 deg (prints without supports), wall 1.2, bottom open.</text>\n'
 svg+=f'<text x="{sx-62}" y="{sy+47}" font-size="3" font-family="Arial" fill="#555">switch opening: measure when holder sample arrives (TBD).</text>\n'
 svg+=f'<text x="{sx-62}" y="{sy+52}" font-size="3" font-family="Arial" fill="#555">fit: print 3 pocket sizes (&#216;110.25 / &#216;110.40 / &#216;110.55), pick the best.</text>\n'
 svg+='</svg>\n'

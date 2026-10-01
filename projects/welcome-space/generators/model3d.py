@@ -24,7 +24,7 @@ PANEL = [(8,0),(24.1,0),(24.1,-2.5),(51.9,-2.5),(51.9,0),(54,0),(54,30),(21,130)
 WING = [(26,0),(30.1,0),(30.1,-2.5),(49.9,-2.5),(49.9,0),(63,0),(63,-18),(78,-18),(78,-8),(40,70),(26,70)]
 NOSE_R, NOSE_H, NOSE_WALL, HUB_H, HUB_RIN = 23.0, 45.0, 1.2, 12.0, 8.0
 NOSE_Z0 = Z_TOP + 130.0
-DIFF = dict(H=24.0, Rtop=58.0, Rbot=62.0, wall=1.2, pocketD=110.4, pocketH=3.0, ledgeR=50.0, ledgeT=2.0)
+DIFF = dict(H=24.0, Rtop=58.0, Rbot=62.0, wall=1.2, pocketD=110.4, pocketH=3.0, ledgeR=50.0, ledgeT=2.0, chamferDz=10.0)
 
 # ---------- geometry helpers ----------
 def sample_loop(pts, step):
@@ -157,7 +157,8 @@ add('nose', 'Nose cone', 'nose', '3D printed in translucent PLA or PETG. It lock
 # diffuser
 D = DIFF; rp = D['pocketD']/2; zl = D['H'] - D['pocketH']; zb = zl - D['ledgeT']
 rout = lambda z: D['Rbot'] + (D['Rtop']-D['Rbot'])*z/D['H']
-prof = [(rp, D['H']), (D['Rtop'], D['H']), (D['Rbot'], 0), (D['Rbot']-D['wall'], 0), (rout(zb)-D['wall'], zb), (D['ledgeR'], zb), (D['ledgeR'], zl), (rp, zl)]
+zc = zb - D['chamferDz']
+prof = [(rp, D['H']), (D['Rtop'], D['H']), (D['Rbot'], 0), (D['Rbot']-D['wall'], 0), (rout(zc)-D['wall'], zc), (D['ledgeR'], zb), (D['ledgeR'], zl), (rp, zl)]
 add('diffuser', 'Exhaust diffuser', 'diffuser', '3D printed, translucent. Holds the plate, hides the electronics and glows when the LEDs are on. (Switch window not shown in this preview.)', [0.71,0.83,0.96], 0.40, revolve([prof], step=3.0), explode=(0,0,-60))
 
 # electronics under the plate. Plan (drawing) x maps to world -x because the bottom view is mirrored.
