@@ -1,0 +1,10 @@
+priority,weight,score_A_1to5,score_B_1to5,weighted_A,weighted_B,evidence
+1 Reliability,8,,,,,
+2 A child can build it alone,7,,,,,
+3 Fits in 60 minutes,6,,,,,
+4 Easy to troubleshoot,5,,,,,
+5 Scales to 140 ships,4,,,,,
+6 FabLab processes visible,3,,,,,
+7 Looks great,2,,,,,
+8 Makes children curious about CAD,1,,,,,
+TOTAL,,,,,,

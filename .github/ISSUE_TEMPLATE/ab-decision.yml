@@ -1,0 +1,33 @@
+name: A/B decision (Model A or Model B)
+description: Record the scores for the Model A / Model B decision
+title: "[A/B] "
+labels: ["decision"]
+body:
+  - type: checkboxes
+    id: gate
+    attributes:
+      label: Electronics gate (10 builds, 10 working)
+      options:
+        - label: Model A passed
+        - label: Model B passed
+  - type: textarea
+    id: scores
+    attributes:
+      label: Scores (1 to 5) per priority, with weights 8 down to 1
+      description: Paste the table from tests/ab-decision-template.csv
+    validations: {required: true}
+  - type: input
+    id: totals
+    attributes:
+      label: Weighted totals
+      placeholder: "A = 118, B = 124"
+  - type: dropdown
+    id: decision
+    attributes:
+      label: Decision
+      options: [Model A, Model B, Neither (redesign)]
+    validations: {required: true}
+  - type: textarea
+    id: why
+    attributes:
+      label: Why, and what changes next

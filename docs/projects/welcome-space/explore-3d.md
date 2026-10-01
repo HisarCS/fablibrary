@@ -18,10 +18,12 @@ Turn the whole ship around, pull it apart, cut it in half and look at the electr
 | **Lights on** | Night mode: the LEDs glow in the diffuser |
 | **Under** | Look from below, at the electronics |
 | Part names | Tap to hide or show a part and read what it is |
+| **Model A / Model B** | Switch between the two designs. See [Model A or Model B?](models.md) |
 
 ## What to look for
 
-- The electronics are only under the base plate: the copper rails, the battery holder with its switch and the three LEDs.
+- **Model A:** the electronics are only under the base plate: the copper rails, the battery holder with its switch and the three LEDs.
+- **Model B:** the holder is under the plate, two wires come up through the plate to the copper rails on the power panel, and the LEDs face outward.
 - Panels and wings are different parts. Their slots are different lengths, so they cannot be mixed up.
 - Hide the panels and the nose cone to see how the plate, the rails and the diffuser fit together.
 
