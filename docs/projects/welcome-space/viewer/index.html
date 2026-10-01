@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0a0f24">
+<title>3D explorer - Welcome Space v1</title>
+<style>
+:root{--bg:#0a0f24;--panel:#141b3a;--panel2:#1c2550;--line:#2c376e;--text:#f2f5ff;--muted:#a9b3d9;--ok:#5DCAA5;--warn:#EF9F27;--blue:#378ADD}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;overflow:hidden;-webkit-user-select:none;user-select:none;touch-action:none}
+#wrap{position:fixed;inset:0;display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+#bar{display:flex;align-items:center;gap:10px;padding:8px 12px}
+#bar h1{font-size:18px;margin:0;flex:1}
+#main{flex:1;min-height:0;display:flex;flex-direction:column}
+#stagewrap{position:relative;flex:1;min-height:200px}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+#hint{position:absolute;left:12px;bottom:10px;color:var(--muted);font-size:14px;pointer-events:none}
+#panel{background:var(--panel);border-top:1px solid var(--line);padding:8px 10px 10px;max-height:46vh;overflow:auto;touch-action:pan-y}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn,.chip{min-height:48px;padding:6px 14px;border-radius:14px;border:2px solid var(--line);background:var(--panel2);font-weight:700}
+.btn.on{border-color:var(--ok);background:#17624c}
+.chip.off{opacity:.45;text-decoration:line-through}
+.chip.sel{border-color:var(--warn)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:6px;vertical-align:-2px;border:1px solid #fff}
+label{display:flex;align-items:center;gap:10px;font-weight:700}
+input[type=range]{width:200px;height:44px;touch-action:pan-y}
+#info{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:16px;min-height:44px}
+#err{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:24px}
+@media (min-width:820px) and (min-aspect-ratio:11/10){#main{flex-direction:row}#panel{width:380px;max-height:none;border-top:0;border-left:1px solid var(--line)}#hint{bottom:10px}}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="bar"><h1>3D explorer: Welcome Space v1</h1><button class="btn" id="reset">Reset view</button></div>
+  <div id="main"><div id="stagewrap"><canvas id="cv"></canvas><div id="hint">Drag to turn. Pinch or scroll to zoom. Double-tap to reset.</div><div id="err">Your browser could not start 3D graphics (WebGL). Try Safari or Chrome.</div></div>
+  <div id="panel">
+    <div class="row" id="views"></div>
+    <div class="row">
+      <label>Explode <input type="range" id="ex" min="0" max="100" value="0"></label>
+      <button class="btn" id="sec">Cut in half</button>
+      <button class="btn" id="lit">Lights on</button>
+      <button class="btn" id="auto">Auto-turn</button>
+    </div>
+    <div class="row" id="chips"></div>
+    <div id="info">Tap a part name to show or hide it and read about it.</div>
+    <div style="color:#a9b3d9;font-size:14px;margin-top:6px">Preview model: slots in the nose cone and the switch window are not shown. Print from the OpenSCAD files, not from this model.</div>
+  </div>
+</div></div>
+<script src="model.js"></script>
+<script>
+(function(){
+'use strict';
+var M=window.MODEL,cv=document.getElementById('cv');
+var gl=cv.getContext('webgl',{antialias:true,alpha:false})||cv.getContext('experimental-webgl');
+if(!gl){document.getElementById('err').style.display='flex';return}
+function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o}
+function prog(v,f){var p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,v));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,f));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p}
+var P=prog(
+'attribute vec3 a_pos;attribute vec3 a_nrm;uniform mat4 u_vp;uniform float u_ang;uniform vec3 u_off;varying vec3 v_n;varying vec3 v_w;'+
+'vec3 rz(vec3 v){float c=cos(u_ang),s=sin(u_ang);return vec3(c*v.x-s*v.y,s*v.x+c*v.y,v.z);}'+
+'void main(){vec3 w=rz(a_pos+u_off);v_w=w;v_n=rz(a_nrm);gl_Position=u_vp*vec4(w,1.0);}',
+'#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n'+
+'varying vec3 v_n;varying vec3 v_w;uniform vec3 u_col;uniform float u_alpha;uniform vec3 u_cam;uniform vec3 u_l;uniform vec3 u_emit;uniform float u_clip;uniform float u_hl;'+
+'void main(){if(u_clip>0.5&&v_w.y>0.0)discard;vec3 n=normalize(v_n);vec3 V=normalize(u_cam-v_w);if(dot(n,V)<0.0)n=-n;'+
+'float d=max(dot(n,normalize(u_l)),0.0);float h=max(dot(n,V),0.0);vec3 c=u_col*(0.32+0.55*d+0.28*h)+u_emit+u_hl*vec3(0.3,0.3,0.0);gl_FragColor=vec4(c,u_alpha);}');
+var PS=prog('attribute vec3 a_pos;uniform mat4 u_vp;uniform float u_size;void main(){vec4 p=u_vp*vec4(a_pos,1.0);gl_Position=p;gl_PointSize=u_size/p.w;}',
+'precision mediump float;uniform vec3 u_col;void main(){float d=length(gl_PointCoord-vec2(0.5))*2.0;float a=pow(max(1.0-d,0.0),2.0);gl_FragColor=vec4(u_col*a,a);}');
+var U={},UP={};
+['u_vp','u_ang','u_off','u_col','u_alpha','u_cam','u_l','u_emit','u_clip','u_hl'].forEach(function(n){U[n]=gl.getUniformLocation(P,n)});
+['u_vp','u_size','u_col'].forEach(function(n){UP[n]=gl.getUniformLocation(PS,n)});
+var aPos=gl.getAttribLocation(P,'a_pos'),aNrm=gl.getAttribLocation(P,'a_nrm'),apPos=gl.getAttribLocation(PS,'a_pos');
+
+function dec(b){var s=atob(b),u=new Uint8Array(s.length);for(var i=0;i<s.length;i++)u[i]=s.charCodeAt(i);return u}
+var parts=M.parts.map(function(p){
+  var pb=gl.createBuffer(),nb=gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER,pb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(dec(p.pos).buffer),gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,nb);gl.bufferData(gl.ARRAY_BUFFER,new Int8Array(dec(p.nrm).buffer),gl.STATIC_DRAW);
+  p.pb=pb;p.nb=nb;return p});
+
+/* matrices (column-major) */
+function persp(f,a,n,fa){var t=1/Math.tan(f/2);return [t/a,0,0,0,0,t,0,0,0,0,(fa+n)/(n-fa),-1,0,0,2*fa*n/(n-fa),0]}
+function sub(a,b){return [a[0]-b[0],a[1]-b[1],a[2]-b[2]]}
+function cross(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}
+function norm(a){var l=Math.hypot(a[0],a[1],a[2])||1;return [a[0]/l,a[1]/l,a[2]/l]}
+function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
+function look(e,t,u){var f=norm(sub(t,e)),s=norm(cross(f,u)),w=cross(s,f);return [s[0],w[0],-f[0],0,s[1],w[1],-f[1],0,s[2],w[2],-f[2],0,-dot(s,e),-dot(w,e),dot(f,e),1]}
+function mul(a,b){var o=new Array(16);for(var i=0;i<4;i++)for(var j=0;j<4;j++){var s=0;for(var k=0;k<4;k++)s+=a[k*4+j]*b[i*4+k];o[i*4+j]=s}return o}
+
+/* state */
+var T=[0,0,100],V0={yaw:-0.75,pitch:0.42,dist:470};
+var cam={yaw:V0.yaw,pitch:V0.pitch,dist:V0.dist},ex=0,clip=false,lit=false,auto=false,sel=null,dirty=true;
+var vis={plate:true,panels:true,wings:true,nose:true,diffuser:true,electronics:true};
+
+/* UI */
+var GROUPS=[['nose','Nose cone','#B5D4F4'],['panels','Panels','#E8CFA3'],['wings','Wings','#378ADD'],['plate','Base plate','#E8CFA3'],['diffuser','Diffuser','#B5D4F4'],['electronics','Electronics','#D85A30']];
+var INFO={nose:'Nose cone: 3D printed in translucent plastic. It locks the tops of the three panels together.',panels:'Body panels (3): laser-cut plywood. Press-fit tabs, no glue.',wings:'Wings (3): laser-cut plywood, shown with a blue sticker. Short slots, so they cannot go in the wrong place.',plate:'Base plate: laser-cut 3 mm birch plywood, 110 mm across. Panels and wings clip into its slots.',diffuser:'Exhaust diffuser: 3D printed, translucent. Holds the plate and glows when the LEDs are on.',electronics:'Under the plate: copper rails (cut on the Roland GS-24), a ready-made battery holder with switch, and 3 LEDs. Turn the ship upside down or press "Under" to see them.'};
+var chipsEl=document.getElementById('chips');
+GROUPS.forEach(function(g){var b=document.createElement('button');b.className='chip';b.setAttribute('data-g',g[0]);b.innerHTML='<span class="sw" style="background:'+g[2]+'"></span>'+g[1];
+  b.onclick=function(){if(sel===g[0]&&vis[g[0]]){vis[g[0]]=false;b.className='chip off'}else{vis[g[0]]=true;b.className='chip sel';[].forEach.call(chipsEl.children,function(c){if(c!==b&&c.className.indexOf('off')<0)c.className='chip'})}
+    sel=g[0];document.getElementById('info').textContent=INFO[g[0]];dirty=true};chipsEl.appendChild(b)});
+var VIEWS=[['Iso',-0.75,0.42],['Front',-1.5708,0.04],['Side',0,0.04],['Top',-1.5708,1.45],['Under',-0.75,-1.0]];
+var viewsEl=document.getElementById('views');
+VIEWS.forEach(function(v){var b=document.createElement('button');b.className='btn';b.textContent=v[0];b.onclick=function(){cam.yaw=v[1];cam.pitch=v[2];dirty=true};viewsEl.appendChild(b)});
+function toggle(id,fn){var b=document.getElementById(id);b.onclick=function(){var on=fn();b.className='btn'+(on?' on':'');dirty=true}}
+toggle('sec',function(){clip=!clip;return clip});
+toggle('lit',function(){lit=!lit;document.getElementById('lit').textContent=lit?'Lights off':'Lights on';return lit});
+toggle('auto',function(){auto=!auto;return auto});
+document.getElementById('ex').oninput=function(){ex=this.value/100;dirty=true};
+function reset(){cam.yaw=V0.yaw;cam.pitch=V0.pitch;cam.dist=V0.dist;dirty=true}
+document.getElementById('reset').onclick=reset;
+
+/* input */
+var ptrs={},lastPinch=0,lastTap=0;
+cv.addEventListener('pointerdown',function(e){cv.setPointerCapture(e.pointerId);ptrs[e.pointerId]={x:e.clientX,y:e.clientY};lastPinch=0;var now=Date.now();if(now-lastTap<300&&Object.keys(ptrs).length===1)reset();lastTap=now});
+cv.addEventListener('pointermove',function(e){var p=ptrs[e.pointerId];if(!p)return;var ids=Object.keys(ptrs);
+  if(ids.length===1){cam.yaw-=(e.clientX-p.x)*0.008;cam.pitch+=(e.clientY-p.y)*0.008;cam.pitch=Math.max(-1.5,Math.min(1.5,cam.pitch))}
+  p.x=e.clientX;p.y=e.clientY;
+  if(ids.length===2){var a=ptrs[ids[0]],b=ptrs[ids[1]],d=Math.hypot(a.x-b.x,a.y-b.y);if(lastPinch)cam.dist=Math.max(120,Math.min(900,cam.dist*lastPinch/d));lastPinch=d}
+  dirty=true});
+function up(e){delete ptrs[e.pointerId];lastPinch=0}
+cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+cv.addEventListener('wheel',function(e){e.preventDefault();cam.dist=Math.max(120,Math.min(900,cam.dist*Math.exp(e.deltaY*0.001)));dirty=true},{passive:false});
+
+/* draw */
+function size(){var r=window.devicePixelRatio||1,w=cv.clientWidth*r,h=cv.clientHeight*r;if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;dirty=true}}
+function frame(t){
+  size();if(auto){cam.yaw+=0.006;dirty=true}
+  var hl=sel?(0.5+0.5*Math.sin(t/250)):0;if(sel)dirty=true;
+  if(dirty){dirty=false;draw(hl)}
+  requestAnimationFrame(frame)}
+function draw(hl){
+  var w=cv.width,h=cv.height;gl.viewport(0,0,w,h);
+  var bg=lit?[0.02,0.03,0.1]:[0.04,0.06,0.14];gl.clearColor(bg[0],bg[1],bg[2],1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+  var dd=cam.dist*(1+0.7*ex),TT=[T[0],T[1],T[2]+10*ex],cp=Math.cos(cam.pitch),eye=[TT[0]+dd*cp*Math.cos(cam.yaw),TT[1]+dd*cp*Math.sin(cam.yaw),TT[2]+dd*Math.sin(cam.pitch)];
+  var view=look(eye,TT,[0,0,1]),vp=mul(persp(0.6,w/h,20,2000),view);
+  var f=norm(sub(TT,eye)),r=norm(cross(f,[0,0,1])),u=cross(r,f);
+  var L=norm([-0.5*r[0]+0.8*u[0]-0.6*f[0],-0.5*r[1]+0.8*u[1]-0.6*f[1],-0.5*r[2]+0.8*u[2]-0.6*f[2]]);
+  gl.useProgram(P);gl.uniformMatrix4fv(U.u_vp,false,new Float32Array(vp));gl.uniform3fv(U.u_cam,eye);gl.uniform3fv(U.u_l,L);gl.uniform1f(U.u_clip,clip?1:0);
+  gl.enable(gl.DEPTH_TEST);
+  var op=[],tr=[];parts.forEach(function(p){if(!vis[p.group])return;(p.alpha<0.99?tr:op).push(p)});
+  tr.sort(function(a,b){return dist2(b,eye)-dist2(a,eye)});
+  gl.disable(gl.BLEND);gl.depthMask(true);op.forEach(function(p){drawPart(p,hl,eye)});
+  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.depthMask(false);tr.forEach(function(p){drawPart(p,hl,eye)});
+  if(lit&&vis.electronics){
+    gl.useProgram(PS);gl.uniformMatrix4fv(UP.u_vp,false,new Float32Array(vp));gl.blendFunc(gl.ONE,gl.ONE);
+    parts.forEach(function(p){if(!p.led)return;
+      var pos=new Float32Array([p.led[0],p.led[1],p.led[2]+p.explode[2]*ex]);var b=gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,pos,gl.STREAM_DRAW);gl.enableVertexAttribArray(apPos);gl.vertexAttribPointer(apPos,3,gl.FLOAT,false,0,0);
+      gl.uniform1f(UP.u_size,h*0.55);gl.uniform3fv(UP.u_col,[p.color[0]*0.9,p.color[1]*0.85,p.color[2]*0.6]);gl.drawArrays(gl.POINTS,0,1);gl.deleteBuffer(b)});
+    gl.disableVertexAttribArray(apPos);gl.useProgram(P)}
+  gl.depthMask(true);gl.disable(gl.BLEND)}
+function dist2(p,e){var z=(p.group==='nose'?177:p.group==='diffuser'?12:60)+p.explode[2]*ex;return Math.pow(z-e[2],2)+e[0]*e[0]+e[1]*e[1]}
+function drawPart(p,hl,eye){
+  var emit=[0,0,0];
+  if(lit){if(p.led)emit=[p.color[0]*0.9,p.color[1]*0.9,p.color[2]*0.7];else if(p.group==='diffuser')emit=[0.75,0.55,0.18];else if(p.group==='nose')emit=[0.28,0.24,0.12]}
+  gl.uniform3fv(U.u_col,p.color);gl.uniform1f(U.u_alpha,(lit&&p.group==='diffuser')?0.8:p.alpha);gl.uniform3fv(U.u_emit,emit);gl.uniform1f(U.u_hl,sel&&p.group===sel?hl:0);
+  gl.bindBuffer(gl.ARRAY_BUFFER,p.pb);gl.enableVertexAttribArray(aPos);gl.vertexAttribPointer(aPos,3,gl.FLOAT,false,0,0);
+  gl.bindBuffer(gl.ARRAY_BUFFER,p.nb);gl.enableVertexAttribArray(aNrm);gl.vertexAttribPointer(aNrm,3,gl.BYTE,true,0,0);
+  p.inst.forEach(function(a){gl.uniform1f(U.u_ang,a*Math.PI/180);gl.uniform3f(U.u_off,p.explode[0]*ex,p.explode[1]*ex,p.explode[2]*ex);gl.drawArrays(gl.TRIANGLES,0,p.n)})}
+window.__viewer={cam:cam,set:function(o){for(var k in o)cam[k]=o[k];dirty=true},ui:function(o){if('ex' in o){ex=o.ex}if('clip' in o)clip=o.clip;if('lit' in o)lit=o.lit;dirty=true},vis:vis};
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
