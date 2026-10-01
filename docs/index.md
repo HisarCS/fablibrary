@@ -4,7 +4,9 @@ An open design library for the K12 students of Hisar IdeaLab FabLab. Every proje
 
 **Assemble → Modify → Design → Fabricate → Test → Improve**
 
-![Welcome Space spaceship, day and night](projects/welcome-space/img/v1_day_night_illustration.svg)
+![Welcome Space spaceship with stickers, day and dark room](projects/welcome-space/img/v1_day_night_illustration.svg)
+
+*Illustration of a finished ship.*
 
 <div class="grid cards" markdown>
 
