@@ -1,5 +1,8 @@
 # Welcome Space – Mission 01
 
+!!! warning "Draft v1: nothing has been physically tested yet"
+    All dimensions are estimates. Check the Assumptions page and the First week plan before cutting or printing.
+
 The first project where grade 4 students meet the FabLab. In 60 minutes, every student builds an LED-lit spaceship they personalize themselves and take home.
 
 **Digital Design → Digital Fabrication → Electronics → Assembly → Testing → Functional Product**

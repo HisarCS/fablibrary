@@ -28,6 +28,14 @@ An open design library for the K12 students of Hisar IdeaLab FabLab. Every proje
 
     Coming soon
 
+-   :material-gamepad-variant: **Play the game** · Mission Control
+
+    ---
+
+    Six short missions on the iPad: match parts to machines, light the LEDs, hunt bugs and design your own ship.
+
+    [:octicons-arrow-right-24: Play](projects/welcome-space/play.md)
+
 </div>
 
 ## The path

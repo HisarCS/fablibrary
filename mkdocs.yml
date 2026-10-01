@@ -43,10 +43,10 @@ nav:
       - Assembly: projects/welcome-space/assembly.md
       - Lesson plan: projects/welcome-space/lesson.md
       - Test plan: projects/welcome-space/test-plan.md
-      - Safety: projects/welcome-space/safety.md
       - First week: projects/welcome-space/first-week.md
-      - Pilot form: projects/welcome-space/pilot.md
       - Assumptions: projects/welcome-space/assumptions.md
+      - Safety: projects/welcome-space/safety.md
+      - Pilot: projects/welcome-space/pilot.md
+      - Play: projects/welcome-space/play.md
       - "Mission: for students": projects/welcome-space/mission.md
-      - "Play: Mission Control": projects/welcome-space/play.md
   - Contribute: contribute.md
