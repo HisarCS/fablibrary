@@ -9,8 +9,8 @@ Target: 140 students + spares and prototypes = **160 kits**. All values are v1 d
 | 1 | Base plate Ø110 | 1 | Laser, 3 mm birch | `laser/v1_base_plate_laser.svg` | 160 |
 | 2 | Body panel | 3 | Laser, 3 mm birch | `laser/v1_panel_laser.svg` | 480 |
 | 3 | Wing | 3 | Laser, 3 mm birch | `laser/v1_wing_laser.svg` | 480 |
-| 4 | Nose cone | 1 | 3D, translucent PLA/PETG | `3d/v1_nose_cone.scad` | 160 |
-| 5 | Exhaust diffuser | 1 | 3D, translucent PLA/PETG | `3d/v1_diffuser.scad` | 160 |
+| 4 | Nose cone | 1 | 3D, translucent PLA/PETG | `3d/stl/v1_nose_cone.stl` (export of `v1_nose_cone.scad`) | 160 |
+| 5 | Exhaust diffuser | 1 | 3D, translucent PLA/PETG | `3d/stl/v1_diffuser.stl` (export of `v1_diffuser.scad`) | 160 |
 | 6 | CR2032 holder with cover and switch | 1 | Off the shelf (Motorobit, sample pending) | – | 160 |
 | 7 | CR2032 cell | 1 | Off the shelf | – | 160 |
 | 8 | 5 mm LED, white | 2 | Off the shelf | – | 320 |

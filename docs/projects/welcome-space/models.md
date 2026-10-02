@@ -40,7 +40,7 @@ Two versions of the same ship. The lesson, the diffuser, the battery holder, the
 | Base plate B | [v1b_base_plate_laser.svg](files/v1b_base_plate_laser.svg){ download } |
 | Panel set: 1 power panel + 2 plain | [v1b_panels_set_laser.svg](files/v1b_panels_set_laser.svg){ download } (cut one set per ship) |
 | Wings (3) | [v1b_wing_laser.svg](files/v1b_wing_laser.svg){ download } |
-| Nose cone B | `3d/v1b_nose_cone.scad` |
+| Nose cone B | `3d/v1b_nose_cone.scad`, [v1b_nose_cone.stl](files/v1b_nose_cone.stl){ download } |
 | Copper band for the GS-24 (3 kits per band) | [v1b_copper_rails_gs24_cut.svg](files/v1b_copper_rails_gs24_cut.svg){ download } |
 | 2 thin flexible wires, about 12 cm, red and black, 5 mm stripped ends | about 24 to 26 AWG, to be confirmed on the bench |
 | Diffuser | The same part as Model A |

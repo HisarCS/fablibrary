@@ -15,6 +15,8 @@ All repository content (docs, READMEs, code comments, drawing labels, commit mes
 - Laser SVGs: red (#FF0000) hairline = cut, black = engrave. Units are mm.
 - OpenSCAD files are parametric; parameters are at the top of each file.
 - Key parameters: `SLOT_W` (slot width), `SLOT_L` (panel slot), `WSLOT_L` (wing slot), `slotW` (nose cone), `pocketD` (diffuser pocket).
+- SLOT_W is defined in two places: generators/base_diffuser_comb.py (Model A) and generators/model_b.py (Model B). After the comb test, change both and rebuild. Also keep slotW (nose cone A), pocket width pW (nose cone B) and pocketD (diffuser) consistent.
+- Print STLs are generated with scripts/export_stl.sh from the .scad files and committed in 3d/stl/. Never edit them by hand. Re-export after every .scad change.
 - For every parameter change, update `CHANGELOG.md` and link the related test issue.
 - Never add student names, photos or any personal data to the repository.
 - After changes, verify the site with `mkdocs build --strict`.

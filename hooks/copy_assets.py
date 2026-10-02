@@ -1,7 +1,7 @@
 """MkDocs hook, runs before each build.
 Copies from projects/<project>/ into docs/projects/<project>/ (all copies are git-ignored):
   drawings/*.svg, stickers/*.svg -> img/
-  laser/*.svg, 3d/*.scad, stickers/*.svg, teaching/*.svg, tests/*.csv -> files/ (direct downloads)
+  laser/*.svg, 3d/*.scad, 3d/stl/*.stl, stickers/*.svg, teaching/*.svg, tests/*.csv -> files/ (direct downloads)
   kit-list.md               -> kit-list.md
 """
 import os, shutil
@@ -25,6 +25,7 @@ def on_pre_build(config, **kwargs):
         _copy(os.path.join(src, "drawings"), os.path.join(dst, "img"), (".svg",))
         _copy(os.path.join(src, "laser"), os.path.join(dst, "files"), (".svg",))
         _copy(os.path.join(src, "3d"), os.path.join(dst, "files"), (".scad",))
+        _copy(os.path.join(src, "3d", "stl"), os.path.join(dst, "files"), (".stl",))
         _copy(os.path.join(src, "stickers"), os.path.join(dst, "files"), (".svg",))
         _copy(os.path.join(src, "stickers"), os.path.join(dst, "img"), (".svg",))
         _copy(os.path.join(src, "teaching"), os.path.join(dst, "files"), (".svg",))

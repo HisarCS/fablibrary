@@ -10,8 +10,9 @@ All tolerances are **estimates**; they are updated in the generator scripts afte
 | Body panel | 3 | Laser | [v1_panel_laser.svg](files/v1_panel_laser.svg){ download } |
 | Wing | 3 | Laser | [v1_wing_laser.svg](files/v1_wing_laser.svg){ download } |
 | Comb test | – | Laser | [v1_comb_test_laser.svg](files/v1_comb_test_laser.svg){ download } |
-| Nose cone | 1 | 3D, translucent | [v1_nose_cone.scad](files/v1_nose_cone.scad){ download } |
-| Exhaust diffuser | 1 | 3D, translucent | [v1_diffuser.scad](files/v1_diffuser.scad){ download } |
+| Nose cone | 1 | 3D, translucent | [v1_nose_cone.scad](files/v1_nose_cone.scad){ download } · [v1_nose_cone.stl](files/v1_nose_cone.stl){ download } |
+| Exhaust diffuser | 1 | 3D, translucent | [v1_diffuser.scad](files/v1_diffuser.scad){ download } · [v1_diffuser.stl](files/v1_diffuser.stl){ download } |
+| Nose cone, Model B | 1 | 3D, translucent | [v1b_nose_cone.scad](files/v1b_nose_cone.scad){ download } · [v1b_nose_cone.stl](files/v1b_nose_cone.stl){ download } |
 
 !!! note "Laser colors"
     Red hairline = cut, black = engrave. Convert text to outlines before sending to the machine.
