@@ -1,5 +1,7 @@
 # Parts and files
 
+Every editable file, with a one-click ZIP of all of them, is on the [Source files](sources.md) page.
+
 Click a file name to download it. Sources and generator scripts are in the [GitHub repository](https://github.com/HisarCS/fablibrary/tree/main/projects/welcome-space).
 
 All tolerances are **estimates**; they are updated in the generator scripts after testing. The full list is on the [Kit list](kit-list.md) page.
