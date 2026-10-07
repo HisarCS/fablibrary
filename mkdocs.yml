@@ -37,22 +37,24 @@ plugins:
 nav:
   - Home: index.md
   - Welcome Space:
-      - Overview: projects/welcome-space/index.md
-      - Parts and files: projects/welcome-space/parts.md
-      - Source files: projects/welcome-space/sources.md
-      - Edit the SVG files: projects/welcome-space/edit-svg.md
-      - Files for Inkscape, Illustrator and Onshape: projects/welcome-space/formats.md
-      - Kit list: projects/welcome-space/kit-list.md
-      - Electronics: projects/welcome-space/electronics.md
-      - Assembly: projects/welcome-space/assembly.md
-      - 3D explorer: projects/welcome-space/explore-3d.md
-      - Model A or B: projects/welcome-space/models.md
-      - Lesson plan: projects/welcome-space/lesson.md
-      - Test plan: projects/welcome-space/test-plan.md
-      - First week: projects/welcome-space/first-week.md
-      - Assumptions: projects/welcome-space/assumptions.md
-      - Safety: projects/welcome-space/safety.md
-      - Pilot: projects/welcome-space/pilot.md
-      - Play: projects/welcome-space/play.md
-      - "Mission: for students": projects/welcome-space/mission.md
+      - Students:
+          - Overview: projects/welcome-space/index.md
+          - Play: projects/welcome-space/play.md
+          - 3D explorer: projects/welcome-space/explore-3d.md
+          - "Mission: for students": projects/welcome-space/mission.md
+      - Team:
+          - Parts and files: projects/welcome-space/parts.md
+          - Source files: projects/welcome-space/sources.md
+          - Edit the SVG files: projects/welcome-space/edit-svg.md
+          - Files for Inkscape, Illustrator and Onshape: projects/welcome-space/formats.md
+          - Kit list: projects/welcome-space/kit-list.md
+          - Electronics: projects/welcome-space/electronics.md
+          - Assembly: projects/welcome-space/assembly.md
+          - Model A or B: projects/welcome-space/models.md
+          - Lesson plan: projects/welcome-space/lesson.md
+          - Test plan: projects/welcome-space/test-plan.md
+          - First week: projects/welcome-space/first-week.md
+          - Assumptions: projects/welcome-space/assumptions.md
+          - Safety: projects/welcome-space/safety.md
+          - Pilot: projects/welcome-space/pilot.md
   - Contribute: contribute.md

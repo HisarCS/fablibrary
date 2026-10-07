@@ -74,10 +74,12 @@ def on_pre_build(config, **kwargs):
                 files += [(sd + '/' + f).replace(os.sep, '/') for f in sorted(os.listdir(os.path.join(root, sd))) if os.path.isfile(os.path.join(root, sd, f)) and not f.endswith('.pyc')]
         files += [f for f in ROOT_FILES if os.path.isfile(os.path.join(root, f))]
         files = list(dict.fromkeys(files))
+        thumbs = [f for f in files if '/exports/web/' in f]   # website thumbnails: copied for the pages, but not in the ZIP or the file list
+        files = [f for f in files if f not in thumbs]
 
         out = os.path.join(docp, 'files'); src = os.path.join(out, 'src')
         shutil.rmtree(src, ignore_errors=True); os.makedirs(src, exist_ok=True)
-        for f in files:
+        for f in files + thumbs:
             if f.endswith('.md') or _hidden(f): continue   # MkDocs would treat copied .md files as pages, and drops dotfiles; both link to GitHub instead
             dst = os.path.join(src, f); os.makedirs(os.path.dirname(dst), exist_ok=True)
             shutil.copy(os.path.join(root, f), dst)
