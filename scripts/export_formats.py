@@ -33,6 +33,15 @@ def illustrator_variant(s):
     s = re.sub(r'\sinkscape:(groupmode|label)="[^"]*"', '', s)
     return s
 
+def preview_variant(s):
+    """For showing on the website: thicker lines and a white background, so thin 0.1 mm cut lines are visible at small size."""
+    s = re.sub(r'stroke-width="(0\.\d+)"', lambda m: 'stroke-width="%s"' % max(float(m.group(1)), 0.6), s)
+    vb = re.search(r'viewBox="([\d.\s-]+)"', s)
+    if vb and 'id="preview-bg"' not in s:
+        a = [float(x) for x in vb.group(1).split()]
+        s = re.sub(r'(<svg[^>]*>)', r'\1\n<rect id="preview-bg" x="%g" y="%g" width="%g" height="%g" fill="#ffffff"/>' % (a[0], a[1], a[2], a[3]), s, count=1)
+    return s
+
 # ---------------- tiny 2D affine helpers ----------------
 def mat_mul(a, b):  # 2x3 affine matrices (a b c d e f)
     return (a[0]*b[0]+a[2]*b[1], a[1]*b[0]+a[3]*b[1], a[0]*b[2]+a[2]*b[3], a[1]*b[2]+a[3]*b[3], a[0]*b[4]+a[2]*b[5]+a[4], a[1]*b[4]+a[3]*b[5]+a[5])
@@ -151,16 +160,17 @@ def revolve_dxf(loops, height):
 
 # ---------------- run ----------------
 def main():
-    n = {'inkscape': 0, 'illustrator': 0, 'dxf': 0, 'onshape': 0}
+    n = {'inkscape': 0, 'illustrator': 0, 'dxf': 0, 'onshape': 0, 'preview': 0}
     for proj in sorted(glob.glob(os.path.join(ROOT, 'projects', '*'))):
         ex = os.path.join(proj, 'exports')
-        for sub in n: os.makedirs(os.path.join(ex, sub), exist_ok=True)
+        for sub in ('inkscape', 'illustrator', 'dxf', 'onshape', 'web'): os.makedirs(os.path.join(ex, sub), exist_ok=True)
         svgs = []
         for d in ('laser', 'stickers', 'teaching', 'drawings', 'custom'): svgs += sorted(glob.glob(os.path.join(proj, d, '*.svg')))
         for f in svgs:
             base = os.path.basename(f); s = open(f, encoding='utf-8').read()
             open(os.path.join(ex, 'inkscape', base), 'w', encoding='utf-8').write(inkscape_variant(s)); n['inkscape'] += 1
             open(os.path.join(ex, 'illustrator', base), 'w', encoding='utf-8').write(illustrator_variant(s)); n['illustrator'] += 1
+            open(os.path.join(ex, 'web', base), 'w', encoding='utf-8').write(preview_variant(s)); n['preview'] += 1
             parent = os.path.basename(os.path.dirname(f))
             if parent in ('laser', 'stickers', 'custom'):
                 d = svg_to_dxf(f)
@@ -180,6 +190,7 @@ def main():
             '| `inkscape/` | Inkscape | Named layers, millimetre display units |\n'
             '| `illustrator/` | Adobe Illustrator | Plain SVG, each group becomes a layer |\n'
             '| `dxf/` | Laser software, LightBurn, xTool, Epilog, any CAD | Layers CUT (red) and ENGRAVE (black), millimetres |\n'
+            '| `web/` | The website | Thicker lines and a white background, for thumbnails |\n'
             '| `onshape/` | Onshape (and any CAD) | Flat profiles and the half-profiles of the revolved parts, for sketches. STL cannot be edited as CAD. |\n')
     print('exported:', ', '.join(f'{v} {k}' for k, v in n.items()))
 

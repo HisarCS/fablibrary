@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="280mm" height="175mm" viewBox="0 0 280 175">
+<rect id="preview-bg" x="0" y="0" width="280" height="175" fill="#ffffff"/>
+<rect width="280" height="175" fill="#ffffff"/>
+<text x="8" y="9" font-size="5" font-family="Arial" font-weight="bold" fill="#222">v1 spaceship - base plate and exhaust diffuser (dimensions in mm)</text>
+<circle cx="65" cy="70" r="55" fill="#E8CFA3" stroke="#8A6A3C" stroke-width="0.6"/>
+<rect x="-14.0" y="-1.55" width="28.0" height="3.1" fill="#ffffff" stroke="#8A6A3C" stroke-width="0.6" transform="translate(65.000,32.000) rotate(-90)"/>
+<rect x="-14.0" y="-1.55" width="28.0" height="3.1" fill="#ffffff" stroke="#8A6A3C" stroke-width="0.6" transform="translate(32.091,89.000) rotate(-210)"/>
+<rect x="-14.0" y="-1.55" width="28.0" height="3.1" fill="#ffffff" stroke="#8A6A3C" stroke-width="0.6" transform="translate(97.909,89.000) rotate(-330)"/>
+<rect x="-10.0" y="-1.55" width="20.0" height="3.1" fill="#ffffff" stroke="#8A6A3C" stroke-width="0.6" transform="translate(99.641,50.000) rotate(-30)"/>
+<rect x="-10.0" y="-1.55" width="20.0" height="3.1" fill="#ffffff" stroke="#8A6A3C" stroke-width="0.6" transform="translate(30.359,50.000) rotate(-150)"/>
+<rect x="-10.0" y="-1.55" width="20.0" height="3.1" fill="#ffffff" stroke="#8A6A3C" stroke-width="0.6" transform="translate(65.000,110.000) rotate(-270)"/>
+<rect x="55" y="61" width="54" height="5" fill="#D85A30"/><rect x="55" y="74" width="54" height="5" fill="#D85A30"/>
+<circle cx="67" cy="70" r="2.75" fill="#ffffff" stroke="#555" stroke-width="0.6"/>
+<circle cx="84" cy="70" r="2.75" fill="#ffffff" stroke="#555" stroke-width="0.6"/>
+<circle cx="101" cy="70" r="2.75" fill="#378ADD" stroke="#555" stroke-width="0.6"/>
+<rect x="19" y="58" width="34" height="24" fill="#D3D1C7" stroke="#555" stroke-width="0.6"/><text x="36" y="71" font-size="3" text-anchor="middle" font-family="Arial">battery holder 34x24</text>
+<circle cx="65" cy="70" r="50" fill="none" stroke="#185FA5" stroke-width="0.6" stroke-dasharray="1.5 1.5"/>
+<text x="113" y="65" font-size="5" text-anchor="middle" font-family="Arial">+</text><text x="113" y="78" font-size="5" text-anchor="middle" font-family="Arial">-</text>
+<line x1="10" y1="130" x2="120" y2="130" stroke="#185FA5" stroke-width="0.6"/><circle cx="10" cy="130" r="0.6" fill="#185FA5"/><circle cx="120" cy="130" r="0.6" fill="#185FA5"/><text x="65.0" y="128.5" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">&#216;110</text>
+<line x1="64.25" y1="57" x2="103.75" y2="57" stroke="#185FA5" stroke-width="0.6"/><circle cx="64.25" cy="57" r="0.6" fill="#185FA5"/><circle cx="103.75" cy="57" r="0.6" fill="#185FA5"/><text x="76.0" y="55.5" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">LED 17</text>
+<line x1="55" y1="48" x2="109" y2="48" stroke="#185FA5" stroke-width="0.6"/><circle cx="55" cy="48" r="0.6" fill="#185FA5"/><circle cx="109" cy="48" r="0.6" fill="#185FA5"/><text x="82.0" y="46.5" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">rail 54 x 5, gap 8</text>
+<line x1="57" y1="46" x2="57" y2="18" stroke="#185FA5" stroke-width="0.6"/><circle cx="57" cy="46" r="0.6" fill="#185FA5"/><circle cx="57" cy="18" r="0.6" fill="#185FA5"/><text x="55.0" y="32.0" font-size="3.2" text-anchor="end" font-family="Arial" fill="#185FA5">slot 28 x 3.1</text>
+<text x="10" y="136" font-size="3" font-family="Arial" fill="#555">bottom view. panel slot 28 (r24..52) at 90/210/330; wing slot 20 (r30..50) at 30/150/270. width 3.1 = 3.0 + T.</text>
+<polygon points="260.20,60.00 263.00,60.00 267.00,84.00 265.80,84.00 264.30,75.00 255.00,65.00 255.00,63.00 260.20,63.00" fill="#B5D4F4" fill-opacity="0.75" stroke="#185FA5" stroke-width="0.6"/>
+<polygon points="149.80,60.00 147.00,60.00 143.00,84.00 144.20,84.00 145.70,75.00 155.00,65.00 155.00,63.00 149.80,63.00" fill="#B5D4F4" fill-opacity="0.75" stroke="#185FA5" stroke-width="0.6"/>
+<rect x="150" y="60" width="110" height="3" fill="#E8CFA3" stroke="#8A6A3C" stroke-width="0.6"/>
+<rect x="159" y="63" width="34" height="6.2" fill="#D3D1C7" stroke="#555" stroke-width="0.6"/>
+<rect x="204.5" y="63" width="5" height="8.5" fill="#ffffff" stroke="#555" stroke-width="0.6"/>
+<rect x="221.5" y="63" width="5" height="8.5" fill="#ffffff" stroke="#555" stroke-width="0.6"/>
+<rect x="238.5" y="63" width="5" height="8.5" fill="#ffffff" stroke="#555" stroke-width="0.6"/>
+<line x1="135" y1="84" x2="275" y2="84" stroke="#888" stroke-width="0.6"/>
+<text x="205" y="50" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#222">section: exhaust diffuser (3D print) + base plate</text>
+<line x1="143" y1="90" x2="267" y2="90" stroke="#185FA5" stroke-width="0.6"/><circle cx="143" cy="90" r="0.6" fill="#185FA5"/><circle cx="267" cy="90" r="0.6" fill="#185FA5"/><text x="205.0" y="94.5" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">&#216;124 (bottom)</text>
+<line x1="147" y1="56" x2="263" y2="56" stroke="#185FA5" stroke-width="0.6"/><circle cx="147" cy="56" r="0.6" fill="#185FA5"/><circle cx="263" cy="56" r="0.6" fill="#185FA5"/><text x="205.0" y="54.5" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">&#216;116 (top)</text>
+<line x1="271" y1="60" x2="271" y2="84" stroke="#185FA5" stroke-width="0.6"/><circle cx="271" cy="60" r="0.6" fill="#185FA5"/><circle cx="271" cy="84" r="0.6" fill="#185FA5"/><text x="273.0" y="73.0" font-size="3.2" text-anchor="start" font-family="Arial" fill="#185FA5">24</text>
+<line x1="155" y1="79" x2="255" y2="79" stroke="#185FA5" stroke-width="0.6"/><circle cx="155" cy="79" r="0.6" fill="#185FA5"/><circle cx="255" cy="79" r="0.6" fill="#185FA5"/><text x="205.0" y="77.5" font-size="3.2" text-anchor="middle" font-family="Arial" fill="#185FA5">&#216;100 support ledge (electronics stay inside this ring)</text>
+<text x="143" y="102" font-size="3" font-family="Arial" fill="#555">pocket: &#216;110.4 x 3 deep (plate sits in), ledge underside chamfered 45 deg (prints without supports), wall 1.2, bottom open.</text>
+<text x="143" y="107" font-size="3" font-family="Arial" fill="#555">switch opening: measure when holder sample arrives (TBD).</text>
+<text x="143" y="112" font-size="3" font-family="Arial" fill="#555">fit: print 3 pocket sizes (&#216;110.25 / &#216;110.40 / &#216;110.55), pick the best.</text>
+</svg>

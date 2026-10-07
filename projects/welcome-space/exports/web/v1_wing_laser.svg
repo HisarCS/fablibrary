@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns="http://www.w3.org/2000/svg" width="180mm" height="100mm" viewBox="0 0 180 100">
+<rect id="preview-bg" x="0" y="0" width="180" height="100" fill="#ffffff"/>
+<g id="CUT-red-hairline" inkscape:groupmode="layer" inkscape:label="CUT: red hairline, cuts through">
+<polygon points="5.00,75.00 9.10,75.00 9.10,77.50 28.90,77.50 28.90,75.00 42.00,75.00 42.00,93.00 57.00,93.00 57.00,83.00 19.00,5.00 5.00,5.00" fill="none" stroke="#FF0000" stroke-width="0.6"/>
+<polygon points="63.00,75.00 67.10,75.00 67.10,77.50 86.90,77.50 86.90,75.00 100.00,75.00 100.00,93.00 115.00,93.00 115.00,83.00 77.00,5.00 63.00,5.00" fill="none" stroke="#FF0000" stroke-width="0.6"/>
+<polygon points="121.00,75.00 125.10,75.00 125.10,77.50 144.90,77.50 144.90,75.00 158.00,75.00 158.00,93.00 173.00,93.00 173.00,83.00 135.00,5.00 121.00,5.00" fill="none" stroke="#FF0000" stroke-width="0.6"/>
+</g>
+<g id="ENGRAVE-black" inkscape:groupmode="layer" inkscape:label="ENGRAVE: black, engraves">
+<text x="15" y="70" font-size="3" text-anchor="middle" font-family="Arial">K</text>
+<text x="73" y="70" font-size="3" text-anchor="middle" font-family="Arial">K</text>
+<text x="131" y="70" font-size="3" text-anchor="middle" font-family="Arial">K</text>
+</g>
+</svg>
