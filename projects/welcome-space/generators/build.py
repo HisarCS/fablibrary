@@ -13,3 +13,6 @@ with tempfile.TemporaryDirectory() as tmp:
         sub = next((d for k, d in dest.items() if f.endswith(k)), 'drawings')
         shutil.copy(os.path.join(tmp, f), os.path.join(proj, sub, f))
         print(f'{sub}/{f}')
+# Model B writes straight into the project folders, then SVGs get Inkscape layer names (must run last: the generators rewrite the files)
+subprocess.run([sys.executable, os.path.join(here, 'model_b.py')], check=True)
+subprocess.run([sys.executable, os.path.join(os.path.dirname(proj), '..', 'scripts', 'svg_tool.py'), 'prepare'], check=True)

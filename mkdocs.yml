@@ -40,6 +40,8 @@ nav:
       - Overview: projects/welcome-space/index.md
       - Parts and files: projects/welcome-space/parts.md
       - Source files: projects/welcome-space/sources.md
+      - Edit the SVG files: projects/welcome-space/edit-svg.md
+      - Files for Inkscape, Illustrator and Onshape: projects/welcome-space/formats.md
       - Kit list: projects/welcome-space/kit-list.md
       - Electronics: projects/welcome-space/electronics.md
       - Assembly: projects/welcome-space/assembly.md

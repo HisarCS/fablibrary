@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="186mm" height="105mm" viewBox="0 0 186 105">
-<g id="CUT-red-hairline">
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns="http://www.w3.org/2000/svg" width="186mm" height="105mm" viewBox="0 0 186 105">
+<g id="CUT-red-hairline" inkscape:groupmode="layer" inkscape:label="CUT: red hairline, cuts through">
 <polygon points="5.000,85.000 8.100,85.000 8.100,87.500 23.900,87.500 23.900,85.000 35.000,85.000 35.000,103.000 50.000,103.000 50.000,93.000 17.000,15.000 5.000,15.000" fill="none" stroke="#FF0000" stroke-width="0.1"/>
 <polygon points="67.000,85.000 70.100,85.000 70.100,87.500 85.900,87.500 85.900,85.000 97.000,85.000 97.000,103.000 112.000,103.000 112.000,93.000 79.000,15.000 67.000,15.000" fill="none" stroke="#FF0000" stroke-width="0.1"/>
 <polygon points="129.000,85.000 132.100,85.000 132.100,87.500 147.900,87.500 147.900,85.000 159.000,85.000 159.000,103.000 174.000,103.000 174.000,93.000 141.000,15.000 129.000,15.000" fill="none" stroke="#FF0000" stroke-width="0.1"/>

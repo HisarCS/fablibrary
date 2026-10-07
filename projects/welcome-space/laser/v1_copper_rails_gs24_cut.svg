@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="50mm" height="88mm" viewBox="0 0 50 88">
-<g id="CUT-red-hairline">
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns="http://www.w3.org/2000/svg" width="50mm" height="88mm" viewBox="0 0 50 88">
+<g id="CUT-red-hairline" inkscape:groupmode="layer" inkscape:label="CUT: red hairline, cuts through">
 <rect x="2.5" y="2" width="5" height="54" fill="none" stroke="#FF0000" stroke-width="0.1"/>
 <rect x="10.5" y="2" width="5" height="54" fill="none" stroke="#FF0000" stroke-width="0.1"/>
 <rect x="18.5" y="2" width="5" height="54" fill="none" stroke="#FF0000" stroke-width="0.1"/>
